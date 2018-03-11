@@ -1,13 +1,9 @@
 from flask import Blueprint, render_template, redirect,request
-from app import db, app
+from app import db
 from app.auth.auths import Auth
 from app.dao.userDao import UserDao
 from app.models.models import User
 user = Blueprint('user',__name__)
-
-@app.before_request
-def before_request():
-    Auth.identify(Auth,request )
 
 @user.route('/index')
 def index():
